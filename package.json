@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "node server/index.js",
-    "dev": "nodemon server/index.js",
+    "start:dev": "nodemon server/index.js",
     "build": "webpack",
     "build:watch": "webpack --watch"
   },
