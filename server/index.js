@@ -11,5 +11,6 @@ app.use(morgan('dev'));
 
 // routes
 app.use(express.static(path.join(__dirname, '../public')));
+app.use('/upload', require('./routes/uploadRoutes'));
 
 app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
