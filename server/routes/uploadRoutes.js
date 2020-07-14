@@ -10,16 +10,18 @@ const s3 = new AWS.S3({
 });
 
 router.get('/', (req, res) => {
+  const { type } = req.query;
+  const extension = type.slice(6);
   // generate key (filename)
   // check authentication & use actual user id in real app (rather than 1234)
-  const key = `${1234}/${uuid()}.jpeg`;
+  const key = `${1234}/${uuid()}.${extension}`;
 
   // get presigned url from s3
   s3.getSignedUrl(
     'putObject',
     {
       Bucket: 'savvored-bucket',
-      ContentType: 'jpeg',
+      ContentType: type,
       Key: key,
     },
     (err, url) => res.json({ key, url })
